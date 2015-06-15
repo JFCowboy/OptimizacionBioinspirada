@@ -6,6 +6,9 @@ Created on Sun Jun 14 18:48:23 2015
 """
 
 import numpy as np
+import random
+from numpy.matlib import zeros
+
 
 #n elementos
 #m mochilas
@@ -19,7 +22,7 @@ def genFirst(indiv, n, m):
         first = np.append(first,aux,axis = 0) 
     return  first
    
-#genFirst(10,4,7)
+genFirst(10,4,7)
    
    
 def mutation(indiv,N):
@@ -27,8 +30,8 @@ def mutation(indiv,N):
     indiv[mutateGen] = np.random.randint(N)    
     return indiv
     
-#a = [0,2,4,5]
-#mutation(a,4)
+a = [0,2,4,5]
+mutation(a,4)
 
 def reproduction(indiv1,indiv2,N):
     indivAux = indiv1
@@ -36,7 +39,7 @@ def reproduction(indiv1,indiv2,N):
     indiv2 = indiv2[:N / 2] + indivAux[(N / 2) :]
     print indiv1, indiv2
 
-#a = [1,2,3,4]
-#b = [5,6,7,8]
+a = [1,2,3,4]
+b = [5,6,7,8]
 
-#reproduction(a,b,4)
+reproduction(a,b,4)
