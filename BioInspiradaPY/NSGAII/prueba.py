@@ -10,7 +10,7 @@ from NoDominancia import noDominancia
 
 
 n = 10
-m = 3
+m = 2
 inv = 20
 
 

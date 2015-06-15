@@ -15,7 +15,7 @@ def compareVal1(val1,val2):
         if(val1[v] > val2[v]):
             return False
     for v in xrange( len( val1 )):
-        if(val1[v] <= val2[v]):
+        if(val1[v] < val2[v]):
             return True 
     return False
 
@@ -24,7 +24,7 @@ def compareVal2(val1,val2):
         if(val1[v] < val2[v]):
             return False
     for v in xrange( len( val1 )):
-        if(val1[v] >= val2[v]):
+        if(val1[v] > val2[v]):
             return True 
     return False
         
