@@ -17,18 +17,25 @@ M    =0;
 '''
 def evaluateInd( indiv ):
     obj = [0]*(M+1)
+    repetir = True
+    while ( repetir ):
+        capacidades = np.copy(cap)
+        for elemento in xrange( N ):
+            mochila = indiv[ elemento ] 
+            if( mochila != M ):
+                obj[ mochila ] += prof[ mochila ][ elemento ]
+                capacidades[ mochila ] -= w[ elemento ]
     
-    capacidades = np.copy(cap)
-    for elemento in xrange( N ):
-        mochila = indiv[ elemento ] 
-        if( mochila != M ):
-            obj[ mochila ] += prof[ mochila ][ elemento ]
-            capacidades[ mochila ] -= w[ elemento ]
-    
-    #print "CAP:", capacidades, "OBJ:", obj
-    #Poner restricciones y que este dentro de los rangos
-    
-    #
+        #print "CAP:", capacidades, "OBJ:", obj
+        #Poner restricciones y que este dentro de los rangos
+        tam = len( capacidades )
+        noValid = [ idx for idx in xrange( tam ) if capacidades[idx]<0 ]
+        print noValid
+        if( len(noValid)>0 ):
+            indiv = correction( indiv, noValid, prof, w, cap, capacidades)
+        else:
+            repetir = False;
+        #
     return obj
 
 
