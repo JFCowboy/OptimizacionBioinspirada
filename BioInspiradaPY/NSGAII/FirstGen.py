@@ -45,7 +45,7 @@ def correction(indiv,mapIndiv,proff,weig,orgCap, cap):
     s = sorted(q, key = lambda ar: ar[0])
     print s    
      
-#a = [1,2,3,4]
-#b = [5,6,7,8]
+#a = [1,2,3,4, 10, 12]
+#b = [5,6,7,8, 11, 13]
 
 #reproduction(a,b,4)

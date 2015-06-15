@@ -45,6 +45,7 @@ def correction(indiv,mapIndiv,proff,weig,orgCap, cap):
 def evaluateInd( indiv ):
     obj = [0]*(M)
     repetir = True
+    
     while ( repetir ):
         capacidades = np.copy(cap)
         for elemento in xrange( N ):
@@ -77,7 +78,8 @@ def evaluateInd( indiv ):
         else:
             repetir = False;
         #
-    return obj
+    #print "indiv, obj, cons, capOri", indiv, obj, capacidades, cap
+    return obj, indiv
 
 
 '''
@@ -102,13 +104,16 @@ def evaluate( indiv, profits, weigth, capacidades, n, m ):
     M = m
     res = []
     
+    idx = 0
     for ind in indiv:
-        evalInd = [evaluateInd(ind)]
+        evalInd, indivAux = evaluateInd(ind)
+        evalInd = [evalInd]
+        indiv[idx] = indivAux
         #print "INDIVIDUO: ",ind, evalInd
         if( len(res) == 0 ):
             res = np.array(evalInd)
         else:
             res = np.append(res, evalInd, axis=0)
         
-    return res
+    return res, indiv
     

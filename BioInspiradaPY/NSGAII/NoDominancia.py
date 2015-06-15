@@ -33,6 +33,7 @@ def noDominancia(z,N):
     s = []
     n = []
     F = []
+    
     indiv = [0]*N  
     for k, val1 in enumerate(z):
         s.append(set())
@@ -68,9 +69,9 @@ def noDominancia(z,N):
         
         idx = 0
         for k in F:
-            
+
             for i in k:
                 indiv[i] = idx
             idx += 1
         
-    return indiv
+    return indiv, F
