@@ -36,6 +36,15 @@ def reproduction(indiv1,indiv2,N):
     indiv2 = indiv2[:N / 2] + indivAux[(N / 2) :]
     print indiv1, indiv2
 
+def correction(indiv,mapIndiv,proff,weig,orgCap):
+    q = []    
+    for key in mapIndiv.keys():
+        for element in mapIndiv[key]:
+            q.append((proff[key][element]/weig[key][element],element))
+    
+    s = sorted(q, key = lambda ar: ar[0])
+    print s    
+     
 #a = [1,2,3,4]
 #b = [5,6,7,8]
 
