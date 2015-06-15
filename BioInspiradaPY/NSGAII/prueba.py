@@ -10,7 +10,7 @@ from Evaluate import evaluate
 
 n = 10
 m = 2
-inv = 2
+inv = 20
 pf = np.array([np.random.randint(100, size=n) for x in xrange(m)])
 cc = np.random.randint(100, 150, size=m)
 ww = np.random.randint(50, size=n)

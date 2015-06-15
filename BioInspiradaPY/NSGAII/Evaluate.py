@@ -26,25 +26,13 @@ def evaluateInd( indiv ):
                 obj[ mochila ] += prof[ mochila ][ elemento ]
                 capacidades[ mochila ] -= w[ elemento ]
     
-        
+        #print "CAP:", capacidades, "OBJ:", obj
         #Poner restricciones y que este dentro de los rangos
         tam = len( capacidades )
         noValid = [ idx for idx in xrange( tam ) if capacidades[idx]<0 ]
-        #print "Individuo",indiv
-        #print "NOVALID", noValid, capacidades
-        objNoValid = {}
-        for idx in xrange( len(indiv) ):
-            x = indiv[idx]
-            if( x in noValid ):
-                if( x not in objNoValid ):
-                    objNoValid[ x ] = []
-                objNoValid[x].append( idx )
-        
-        #print "Objeto no valido",objNoValid
-        
         print noValid
         if( len(noValid)>0 ):
-            indiv = correction( indiv, objNoValid, prof, w, cap, capacidades)
+            indiv = correction( indiv, noValid, prof, w, cap, capacidades)
         else:
             repetir = False;
         #
