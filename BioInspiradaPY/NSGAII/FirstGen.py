@@ -37,9 +37,9 @@ def reproduction(indiv1,indiv2,N):
     indivAux = indiv1
     indiv1 = indiv1[:N / 2] + indiv2[(N / 2) :]
     indiv2 = indiv2[:N / 2] + indivAux[(N / 2) :]
-    print indiv1, indiv2
+    return indiv1, indiv2
 
-a = [1,2,3,4]
-b = [5,6,7,8]
+a = [1,2,3,4,5]
+b = [6,7,8,9,0]
 
-reproduction(a,b,4)
+reproduction(a,b,5)
