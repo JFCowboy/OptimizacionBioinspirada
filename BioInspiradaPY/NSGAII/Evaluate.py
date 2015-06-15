@@ -5,6 +5,7 @@ Created on 14/06/2015
 '''
 import numpy as np 
 from numpy.matlib import zeros
+#from FirstGen import correction
 
 prof = [[]]
 w    = []
@@ -15,8 +16,34 @@ M    =0;
 '''
 
 '''
+
+
+def correction(indiv,mapIndiv,proff,weig,orgCap, cap):
+    global M
+    q = []
+#    print "proffit -> ", proff    
+#    print "weig -> ", weig
+#    print "MapIndiv ->", mapIndiv
+    for key in mapIndiv.keys():
+        for element in mapIndiv[key]:
+#            print "q ->", proff[key][element],"--", weig[element]
+            q.append((key,proff[key][element]*1.0/weig[element],element))
+            
+    #print "Individuo Inicial ->", indiv     
+    qSort = sorted(q, key = lambda ar: (ar[0],ar[1]))
+    lastQ = -1    
+    for s in qSort:
+        if(s[0] != lastQ):
+            indiv[s[2]] = M
+        lastQ = s[0]
+        
+   
+    #print "Sorted ->", qSort 
+    #print "Individuo Final ->", indiv 
+    return indiv
+    
 def evaluateInd( indiv ):
-    obj = [0]*(M+1)
+    obj = [0]*(M)
     repetir = True
     while ( repetir ):
         capacidades = np.copy(cap)
@@ -30,9 +57,19 @@ def evaluateInd( indiv ):
         #Poner restricciones y que este dentro de los rangos
         tam = len( capacidades )
         noValid = [ idx for idx in xrange( tam ) if capacidades[idx]<0 ]
-        print noValid
+        objNoValid = {}
+        
+        for idx in xrange( len(indiv)):
+             x = indiv[idx]
+             if(x in noValid):
+                 if(x not in objNoValid):
+                     objNoValid[x] = []
+                 objNoValid[x].append( idx )
+        
+        #print "NoValid ->",noValid
+        #print "ObjNoValid ->", objNoValid
         if( len(noValid)>0 ):
-            indiv = correction( indiv, noValid, prof, w, cap, capacidades)
+            indiv = correction( indiv, objNoValid, prof, w, cap, capacidades)
         else:
             repetir = False;
         #
