@@ -28,11 +28,12 @@ def compareVal2(val1,val2):
             return True 
     return False
         
-def noDominancia(z):        
+def noDominancia(z,N):        
 
     s = []
     n = []
     F = []
+    indiv = [0]*N  
     for k, val1 in enumerate(z):
         s.append(set())
         n.append(0)
@@ -48,7 +49,7 @@ def noDominancia(z):
             F[0].add(k)
     
     fc = 0
-    print "F->->->", F
+    #print "F->->->", F
     while (len(F[fc])!= 0):
         Q = set()
         for k in F[fc]:
@@ -58,11 +59,18 @@ def noDominancia(z):
                 if (n[j] == 0):
                     Q.add(j)
         fc += 1   
-        print "Q ->", Q
+        #print "Q ->", Q
         if fc >= len(F):
             F.append(set())
         F[fc] = Q
 
-        print "F ->",F[fc]
+        #print "F ->",F
         
-    return F
+        idx = 0
+        for k in F:
+            
+            for i in k:
+                indiv[i] = idx
+            idx += 1
+        
+    return indiv

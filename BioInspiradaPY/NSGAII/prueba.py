@@ -21,7 +21,7 @@ pg = genFirst(inv, n, m)
 
 #print "PG:",pg, "WW:",ww, "CC:",cc, "PF:",pf
 evalu = evaluate(pg, pf, ww, cc, n, m)
-print "Paretto ->",noDominancia(evalu) 
+print "Paretto ->",noDominancia(evalu, inv) 
 #print evaluate(pg, pf, ww, cc, n, m)
 crow = crowdinDistance(n, m, pg, pf, cc)
 print crow
