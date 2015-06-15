@@ -10,13 +10,10 @@ from NoDominancia import noDominancia
 
 
 n = 10
-<<<<<<< HEAD
-m = 5
+m = 3
 inv = 20
-=======
-m = 2
-inv = 2
->>>>>>> origin/master
+
+
 pf = np.array([np.random.randint(100, size=n) for x in xrange(m)])
 cc = np.random.randint(20, 50, size=m)
 ww = np.random.randint(50, size=n)
@@ -25,4 +22,4 @@ pg = genFirst(inv, n, m)
 #print "PG:",pg, "WW:",ww, "CC:",cc, "PF:",pf
 evalu = evaluate(pg, pf, ww, cc, n, m)
 print "Paretto ->",noDominancia(evalu) 
-print evaluate(pg, pf, ww, cc, n, m)
+#print evaluate(pg, pf, ww, cc, n, m)

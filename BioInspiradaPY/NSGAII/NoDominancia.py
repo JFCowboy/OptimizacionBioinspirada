@@ -48,6 +48,7 @@ def noDominancia(z):
             F[0].add(k)
     
     fc = 0
+    
     while (len(F[fc])!= 0):
         Q = set()
         for k in F[fc]:
@@ -57,6 +58,11 @@ def noDominancia(z):
                 if (n[j] == 0):
                     Q.add(j)
         fc += 1   
-        print F[fc - 1]
+        print "Q ->", Q
+        if fc >= len(F):
+            break           
         F[fc] = Q
-    return F[fc]
+
+        print "F ->",F[fc]
+        
+    return F
